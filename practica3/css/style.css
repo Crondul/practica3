@@ -62,18 +62,29 @@ fieldset{
     border: transparent;
     margin-top: 5em;
 }
-footer{
-    position:static;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #efefef;
-    margin-top: 5em;
-    padding: 1em 0 1em 0;
+
+/* Pie de página */
+
+footer {
+  box-shadow: 10px 5px 10px 0px rgba(0,0,0,0.37);
+  background-color: #A3CFEC;
+    clear : both;
+    color : #6D6D6D;
+    text-align : center;
+    padding-bottom: 10px;
+  border: 1px solid #6D6D6D;
+  border-radius: 0 0 30px 30px;
 }
-footer>ul>li:first-child{
-    background-color: #A4A4B4;
+
+footer a{
+  text-decoration: none;
 }
+
+footer a:hover{
+  text-decoration: underline;
+}
+
+
 h1 {
     font-size: 2em;
     color: #283035;
