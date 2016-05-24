@@ -1,0 +1,18 @@
+   <div id="divlogin" class="capa">
+    <fieldset class="info" >
+        <form class="form" name="flog" onsubmit="hacerLogin(); return false" method="post" >
+        <!--action="index.html"--> 
+            <div>
+                <ul>
+                <li> <h2>Identifícate</h2> <span class="required_notification">* Datos requeridos</span> </li> 
+                    <li><label for="user">Nick Usuario:</label>
+                        <input id="user" name="user" type="text" placeholder="Pepe19" required autofocus 
+                        pattern="^[a-zA-Z][a-zA-Z0-9]{1,20}$" title="El nick no debe contener espacios en blanco. Sólo se podrán utilizar números y letras. No puede empezar por un número" /></li>
+                    <li><label for="pass">Contraseña:</label>
+                        <input id="pass" name="pass" type="password" required /> </li>
+                        <li><button class="boton" name="enviar" type="submit">Identificarse</button><button class="boton" onclick="borrarCapa();">Cerrar</button></li> 
+                </ul>
+            </div>        
+        </form>
+    </fieldset> 
+    </div>

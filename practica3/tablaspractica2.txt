@@ -1,0 +1,195 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost:3306
+-- Tiempo de generación: 25-04-2016 a las 10:28:20
+-- Versión del servidor: 5.5.42
+-- Versión de PHP: 7.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `ph2`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `ID` int(11) NOT NULL,
+  `TITULO` varchar(50) NOT NULL,
+  `TEXTO` text NOT NULL,
+  `FECHAHORA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ID_VIAJE` int(11) NOT NULL,
+  `LOGIN` varchar(20) NOT NULL COMMENT 'Autor del comentario'
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`ID`, `TITULO`, `TEXTO`, `FECHAHORA`, `ID_VIAJE`, `LOGIN`) VALUES
+(1, 'El idioma', '¿Con el inglés se puede mover uno por esa zona?', '2016-01-26 17:26:22', 2, 'usu2'),
+(2, 'Re: El idioma', 'Claro que sí, casi todo el mundo lo habla allí.', '2016-01-27 09:43:15', 2, 'usu1'),
+(3, 'El tiempo', 'Qué tal el tiempo?', '2016-03-06 20:00:07', 1, 'usu2'),
+(4, 'Fotos muy bonitas', 'Las fotos son geniales.', '2016-03-06 20:00:47', 3, 'usu2'),
+(5, 'Mujeres', 'Para los que aún tenéis dudas, se liga bastante :)', '2016-04-11 08:31:56', 4, 'rojano'),
+(6, 'Re: Mujeres', 'Supongo que será mi próximo viaje ;)', '2016-04-11 08:44:17', 4, 'usu3');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foto`
+--
+
+CREATE TABLE `foto` (
+  `ID` int(11) NOT NULL,
+  `DESCRIPCION` text NOT NULL,
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `FICHERO` varchar(100) NOT NULL,
+  `ID_VIAJE` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `foto`
+--
+
+INSERT INTO `foto` (`ID`, `DESCRIPCION`, `FECHA`, `FICHERO`, `ID_VIAJE`) VALUES
+(1, 'Ayuntamiento de Hannover', '2016-02-22 10:07:14', '1.jpg', 2),
+(2, 'Otra foto del ayuntamiento de Hannover', '2016-02-22 10:07:18', '2.jpg', 2),
+(3, 'Otra foto más del ayuntamiento de Hannover', '2016-02-22 10:07:22', '3.jpg', 2),
+(4, 'Foto del Santiago Bernabeu', '2016-02-09 23:00:00', '4.jpg', 1),
+(5, 'Parque del Retiro', '2016-02-10 23:00:00', '5.jpg', 1),
+(6, 'Foto nocturna del Big Ben', '2015-12-04 23:00:00', '6.jpg', 3),
+(7, 'Foto del Támesis', '2015-12-05 23:00:00', '7.png', 3),
+(8, 'Resort en Punta Cana', '2016-04-03 22:00:00', '8.jpg', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `LOGIN` varchar(20) NOT NULL,
+  `PASSWORD` varchar(20) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `CLAVE` varchar(35) NOT NULL,
+  `FOTO` varchar(100) NOT NULL,
+  `ULTIMO_ACCESO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Fecha y hora en la que se conectó'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`LOGIN`, `PASSWORD`, `NOMBRE`, `EMAIL`, `CLAVE`, `FOTO`, `ULTIMO_ACCESO`) VALUES
+('rojano', 'rojano', 'Manuel Rojano', 'manu@umh.es', '70335f0e7a6e50eb60fb348a6f4d6416', 'rojano.jpg', '2016-04-24 11:34:51'),
+('rubio', 'rubio', 'Daniel Sánchez Morales', 'rubio@alu.ua.es', 'e6107160dfb9a51f7a06a19ee2824bc3', '', '2016-04-24 15:07:58'),
+('usu1', 'usu1', 'Usuario 1', 'usu1@ph2.es', '81160a26e200374cccd626ad130d2d26', 'usu1.jpg', '2016-04-21 10:42:24'),
+('usu2', 'usu2', 'Usuario', 'usu2@ph2.es', '4e28310942fdab76c5b6ab56649223a7', 'usu2.jpg', '2016-04-25 07:04:21'),
+('usu3', 'usu3', 'Usuario 3', 'usu3@ph2.es', '4da47f5b21072a9b15317b722495ef1a', 'usu3.jpg', '2016-02-28 21:44:17');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `viaje`
+--
+
+CREATE TABLE `viaje` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` varchar(200) NOT NULL,
+  `DESCRIPCION` text NOT NULL COMMENT 'Descripción del viaje (recorrido, etc)',
+  `FECHA_INICIO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `FECHA_FIN` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `VALORACION` tinyint(6) NOT NULL,
+  `LOGIN` varchar(20) NOT NULL COMMENT 'Usuario que dio de alta el viaje en la web'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `viaje`
+--
+
+INSERT INTO `viaje` (`ID`, `NOMBRE`, `DESCRIPCION`, `FECHA_INICIO`, `FECHA_FIN`, `VALORACION`, `LOGIN`) VALUES
+(1, 'MADRID', 'Viaje a Madrid a ver el musical del Rey león', '2016-02-10 10:09:58', '2016-02-12 13:25:00', 3, 'usu1'),
+(2, 'Baja Sajonia', 'Viaje por la baja Sajonia en Alemania. Hannover, una maravilla.', '2016-01-09 23:00:00', '2016-02-12 23:00:00', 4, 'usu1'),
+(3, 'Londres', 'Viaje a Londres en el puente de la constitución para hacer las compras de Navidad. Vuelo directo desde Madrid.', '2015-12-03 23:00:00', '2015-12-07 23:00:00', 5, 'usu2'),
+(4, 'Punta Cana', 'Viaje fin de carrera, a la altura de lo que me esperaba, grandes compañeros mejores personas. Eché de menos a mi novia...', '2016-04-11 08:14:19', '2016-04-08 22:00:00', 5, 'rojano');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `LOGIN` (`LOGIN`);
+
+--
+-- Indices de la tabla `foto`
+--
+ALTER TABLE `foto`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_VIAJE` (`ID_VIAJE`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`LOGIN`);
+
+--
+-- Indices de la tabla `viaje`
+--
+ALTER TABLE `viaje`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `LOGIN` (`LOGIN`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT de la tabla `foto`
+--
+ALTER TABLE `foto`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `viaje`
+--
+ALTER TABLE `viaje`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`LOGIN`) REFERENCES `usuario` (`LOGIN`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `foto`
+--
+ALTER TABLE `foto`
+  ADD CONSTRAINT `ID_VIAJE` FOREIGN KEY (`ID_VIAJE`) REFERENCES `viaje` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `viaje`
+--
+ALTER TABLE `viaje`
+  ADD CONSTRAINT `LOGIN` FOREIGN KEY (`LOGIN`) REFERENCES `usuario` (`LOGIN`) ON DELETE CASCADE ON UPDATE CASCADE;

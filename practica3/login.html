@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log In</title>
+    <script src="java/script.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="images/icono.ico" />
+    <!-- begin CSS -->
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="iconos/css/iconos.css" />
+    <!-- end CSS -->
+</head>
+<body onload="">
+ <div><!-- begin container -->
+       <header>
+
+        <img id="logo" src="images/barco.png" alt="logo de la pagina" />
+
+        <!-- begin nav -->
+       
+        <nav id="navigation">
+        <input type="checkbox" id="menu-trigger">
+            <ul id="menu-nav">
+                <li  id="menu" ><label for="menu-trigger">&equiv; MENU</label></li>
+                <li id="primero"><a href="index.html"> <i class=" icon-warehouse"></i>Inicio</a></li>
+            </ul>
+        </nav>
+        
+        <!-- end nav -->
+    </header>
+    <main id="login">
+    <!--
+    <p id="demo">A Paragraph.</p>
+    <button type="button" onclick="myFunction()">Try it</button>
+    -->
+    <fieldset>
+        <form class="form" name="flog" onsubmit="hacerLogin(); return false" method="post" >
+        <!--action="index.html"--> 
+            <div>
+                <ul>
+                <li> <h2>Identifícate</h2> <span class="required_notification">* Datos requeridos</span> </li> 
+                    <li><label for="user">Nick Usuario:</label>
+                        <input id="user" name="user" type="text" placeholder="Pepe19" required autofocus 
+                        pattern="^[a-zA-Z][a-zA-Z0-9]{1,20}$" title="El nick no debe contener espacios en blanco. Sólo se podrán utilizar números y letras. No puede empezar por un número" /></li>
+                    <li><label for="pass">Contraseña:</label>
+                        <input id="pass" name="pass" type="password" required /> </li>
+                        <li><button class="boton" name="enviar" type="submit">Identificarse</button></li>  
+                </ul>
+            </div>        
+        </form>
+    </fieldset>  
+    </main>
+ </div><!-- end container -->
+    <footer>
+        <ul>
+            <li>Sitio web creado por Mateo Bernal Montoya</li>
+            <li><a href="acerca.html">Información de contacto</a></li>
+            <li><p>2016</p></li>
+            <li><p>&copy; copyright</p></li>
+        </ul>
+    </footer>   
+</body>
+</html>

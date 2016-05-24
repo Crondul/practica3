@@ -1,0 +1,336 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+ /* Generales */
+ * {
+    margin: 0;
+    padding: 0;
+ }
+
+ a {
+    color: white;
+    text-decoration: none;
+ }
+
+ul {
+    list-style-type: none;
+}
+
+main img {
+    width: 100%;
+    height: 13em;
+    border-radius: 2em;    } 
+main{
+    max-width: 1300px;
+    margin:auto;
+}
+main section{
+    margin: 5em 1em 5em 1em;
+}
+body{
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+}
+header {
+   	background-color: #8F39A1; 
+}
+header img{
+    margin: auto;
+    width: 100%;
+    height: 15em;
+    width: 15em;
+}
+/* Varios */
+table{
+        margin:auto;
+
+}
+#titulos {
+    background-color: #BC50CC;
+    font-weight: bold;
+}
+#titulos td {
+    padding: 0.3em;
+}
+#contenido{
+    height: 100%;
+}
+form{
+    margin: auto;
+    width: 20em;
+}
+fieldset{
+    border: transparent;
+    margin-top: 5em;
+}
+footer{
+    position:static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #efefef;
+    margin-top: 5em;
+    padding: 1em 0 1em 0;
+}
+footer>ul>li:first-child{
+    background-color: #A4A4B4;
+}
+h1 {
+    font-size: 2em;
+    color: #283035;
+    margin-bottom: 1em;
+}
+h4 span{
+    font-size: 120%;
+    text-decoration: underline;
+}
+li span{
+    display: inline-block;
+    font-weight: bolder;
+    font-size: 120%;
+}
+/* Botones */
+#primero{
+    color: white;
+}
+button{
+        font-size:1em;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background: #BF67CC;
+        border:0.5em;
+        height:3em;
+        margin: 1em;
+}
+button:hover{
+    background:#8C0890;
+}    
+
+/* Formulario registro */
+form p{
+    font-weight: unset;
+}
+form ul { 
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px; } 
+form li { 
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    position: relative; } 
+
+form li:first-child, form li:last-child {
+ border-bottom: 1px solid #777; /* borde mas negro */ 
+} 
+form h2 { margin: 0; display: inline; } 
+.required_notification { 
+    color: #d45252;
+    margin: 5px 0 0 0;
+    display: inline;
+    float: right; 
+} 
+form label { 
+    width: 150px;
+    margin-top: 3px;
+    display: inline-block; 
+    float: left; 
+    padding: 3px; 
+} 
+form input { 
+    height: 20px; 
+    width: 220px; 
+    padding: 5px 8px; 
+} 
+/* Elementos visuales del formulario */ 
+form input{ 
+    border: 1px solid #aaa; 
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset; /* dos sombras */ 
+    border-radius: 2px; 
+    padding-right: 30px;
+    } 
+form input:focus, form input:hover{ 
+    background: #fff; 
+    border: 1px solid #555; 
+    box-shadow: 0 0 3px #aaa;
+} 
+form input:required{ 
+    background: #fff url(images/red_asterisk.png) no-repeat 98% center; } 
+form textarea:required{
+    background: #fff url(images/red_asterisk.png) no-repeat 98% center; 
+} 
+form textarea:required:valid{
+    background: #fff url(images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}    
+textarea{
+    display: block;
+margin: auto;
+}
+form input:required:valid { 
+    background: #fff url(images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f; } 
+form input:focus:invalid{ 
+    background: #fff url(images/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535; } 
+.form_hint { 
+    background: #d45252; 
+    border-radius: 3px 3px 3px 3px; color: white; 
+    z-index: 999; /* z-index para ocultar el placeholder */ 
+/* permite el formato correcto si es indicio dos líneas */ 
+    display: none; }
+.form_hint::before {
+    content: "\25C0"; /* triangulito */
+    color:#d45252;
+    top:1px;
+    left:-6px;
+}
+
+.form input:focus + .form_hint {display: inline;}
+.form input:required:valid + .form_hint {background: #195D9A;} /* cambia el hint cuando es valido */
+.form input:required:valid + .form_hint::before {color:#195D9A;} /* cambia el hint cuando es valido */
+
+label:hover {
+    color:#6E1FFF;
+}
+form input[type="date"]{
+    width: 15em;
+    display: inline-block;
+}
+.li_hint{
+    display: none;
+}
+/* MENSAJES EMERGENTES*/
+.fondo
+{
+    position: fixed;    
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    background-color: rgba(50,50,0,0.3);
+    bottom: 1px;
+    z-index: 999;
+}
+
+.fondo .mensaje
+{
+    margin: auto;
+    max-width: 15em;
+    position: relative;
+    transition: 3s;
+    transform: translate(0%,200%);
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+.mensaje p
+{
+    font-family: 'Vollkorn', serif;
+    padding: 5px;   
+}
+
+.mensaje div
+{
+    float: right;
+    margin: 5px;
+    width: 150px;
+ }
+  .botones
+{
+    padding: 5px;   
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #DDF; 
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Lora', Lora;
+}
+
+.botones:hover
+{
+    background-color: #BBE;
+    cursor: pointer;
+} 
+/* CAPA SEMI-TRANSPARENTE*/
+.capa
+{   
+    position: fixed;    
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    background-color: rgba(50,50,0,0.3);
+    bottom: 1px;
+    z-index: 999;
+}
+
+.capa .info
+{
+    position: relative;
+    transition: 3s;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/*MENU NAVEGACIÓN*/
+#botones li{
+    display: inline;
+}
+
+@media screen and (min-width: 480px){
+
+.floating-box{
+    width: 20em;
+}
+
+.form_hint { 
+   float: left;
+   margin-left: 35%;
+    }  
+
+.form{
+       width: 28em;
+}
+#menu{
+    display: none;
+}
+#menu-trigger{
+    display: none;
+}
+
+}
+@media screen and (min-width: 926px) {
+
+.form_hint { 
+    background: #d45252; 
+    border-radius: 3px 3px 3px 3px; color: white; 
+    margin-left: 8px; padding: 1px 6px; 
+    z-index: 999; /* z-index para ocultar el placeholder */ 
+    position: absolute; /* permite el formato correcto si es indicio dos líneas */ 
+    display: none; }
+.form_hint::before {
+    content: "\25C0"; /* triangulito */
+    color:#d45252;
+    position: absolute;
+    top:1px;
+    left:-6px;
+}
+form input:focus, form input:hover{
+    padding-right: 70px;
+}
+
+ /* Formulario*/
+ .form{
+       width: 40em;
+} 
+
+}
+
+

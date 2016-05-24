@@ -1,0 +1,24 @@
+<div id="divlogin" class="capa">
+<fieldset class="info">
+<form id="freg" method="post" onsubmit="registro();return false;" class="form">
+                <ul>
+                <li id"cambiar"> <h2>Regístrate</h2> <span class="required_notification">* Datos requeridos</span> </li> 
+                    <li id="capausuario"><label for="usuario">Nick Usuario:</label>
+                        <input id="usuario" name="login" type="text" oninput="loginDisponible()" placeholder="Pepe19" required autofocus 
+                        pattern="^[a-zA-Z][a-zA-Z0-9]{1,20}$" title="El login no debe contener espacios en blanco. Sólo se podrán utilizar números y letras" /></li>
+                    <li><label for="pass">Contraseña:</label>
+                        <input id="pass" name="pwd" type="password" oninput="comprobarPassRegistro()" required pattern="[a-zA-Z0-9^_-]{1,20}$" title="Sólo se podrán utilizar letras mayúsculas, minúsculas, números y los caracteres '_' y '-'" /> </li>
+                    <li id="capapass"><label for="pass2">Repetir Contraseña:</label>
+                        <input id="pass2" name="pwd2" type="password" oninput="comprobarPassRegistro()" required /> </li>
+                    <li><label for="email">Dirección Email:</label>
+                        <input id="email" name="email" type="email"  placeholder="pepe@alu.ua.es" required /><span class="form_hint">Formato correcto: "name@something.com"</span> </li>
+                    <li><label for="nombre">Nombre Completo:</label>
+                        <input id="nombre" name="nombre" type="text" placeholder="Pepe Martinez" required /></li>
+                    <li>
+                        <button class="boton" name="enviar" type="submit">Registrarse</button><button class="boton" onclick="borrarCapa();">Cerrar</button>
+                         
+                    </li>   
+                </ul>      
+        </form>
+</fieldset>
+</div>
